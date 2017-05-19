@@ -1,0 +1,22 @@
+{
+  "name": "grape-with-swagger",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simonhildebrandt/grape-with-swagger.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/simonhildebrandt/grape-with-swagger/issues"
+  },
+  "homepage": "https://github.com/simonhildebrandt/grape-with-swagger#readme",
+  "devDependencies": {
+    "swagger-ui": "^3.0.10"
+  }
+}
