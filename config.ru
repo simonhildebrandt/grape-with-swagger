@@ -39,7 +39,7 @@ class DummyAPI < Grape::API
     end
 
     params do
-      requires :id, type: String
+      requires :id, type: String, desc: "Author id"
     end
     get ':id' do
       author_by_id(params['id']) || error!(:not_found, 404)
@@ -91,9 +91,10 @@ class DummyAPI < Grape::API
 
     params do
       requires :name, type: String
+      requires :author_id, type: String, values: -> () { $authors.map{|a| a[:id]} }, documentation: { values: nil }
     end
     post do
-      create_book(id: SecureRandom.uuid, name: params['name'])
+      create_book(id: SecureRandom.uuid, name: params['name'], author: params['author_id'] )
     end
 
     params do
@@ -108,9 +109,10 @@ end
 module API
   class Root < Grape::API
     format :json
+    version 'v1', using: :header, vendor: 'simon'
 
     mount DummyAPI
-    add_swagger_documentation
+    add_swagger_documentation info: { title: "Simon's API" }
   end
 end
 
